@@ -1,0 +1,41 @@
+<%- include('../partials/header', { siteTitle: "Casino App", pageTitle: "Registration" }) %>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0 text-center">Create Your Account</h2>
+                </div>
+                <div class="card-body p-4">
+                    <form action="/register" method="POST">
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Username</label>
+                            <input type="text" class="form-control form-control-lg" id="username" name="username" required
+                                   placeholder="Enter your username">
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control form-control-lg" id="email" name="email" required
+                                   placeholder="Enter your email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control form-control-lg" id="password" name="password" required
+                                   placeholder="Create a password">
+                            <div class="form-text">Minimum 8 characters</div>
+                        </div>
+                        <div class="d-grid gap-2 mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">Register Now</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer text-center bg-light">
+                    <p class="mb-0">Already have an account? <a href="/login" class="text-primary">Sign in</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>
