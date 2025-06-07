@@ -1,0 +1,11 @@
+div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+body {
+  background-color: rgb(228, 104, 104);
+  color: white;
+}

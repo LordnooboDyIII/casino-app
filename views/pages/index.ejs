@@ -1,15 +1,50 @@
-<%- include ("../partials/header.ejs") %>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modern Web App</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
-    <link rel="stylesheet" href="/css/WelcomePage.css">
+    <%- include ("../partials/head.ejs") %>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Welcome Page</title>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+        <link rel="stylesheet" href="../css/WelcomePage.css">
+        <style>
+            div.welcome-section {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                height: 100vh;
+            }
+
+            body {
+                background-color: rgb(228, 104, 104);
+                color: white;
+                font-family: 'Poppins', sans-serif;
+                font-size: 20px;
+            }
+
+            a.btn-danger {
+                padding: 25px;
+                margin: 20px;
+                font-weight: 600;
+            }
+        </style>
 </head>
+
 <body>
-   
+
+    <%- include ("../partials/navbar.ejs") %>
+
+    <div class="welcome-section">
+        <h1>Want to become rich in one click?</h1>
+        <p>Don't worry! Just click this button to solve all your problems and gain $1,000,000 💸💸💸</p>
+        <a href="/games" class="btn btn-danger">Click Here 🤑</a>
+        <p>Get rich now 😈</p>
+    </div>
+
 </body>
+
 </html>
