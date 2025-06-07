@@ -1,0 +1,21 @@
+div.welcome-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 100vh;
+}
+
+body {
+  background-color: rgb(228, 104, 104);
+  color: white;
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+}
+
+a.btn-danger {
+  padding: 25px;
+  margin: 20px;
+  font-weight: 600;
+}

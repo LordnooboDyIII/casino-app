@@ -30,6 +30,7 @@ Bootstrap
 */
 app.use("/js", express.static(__dirname + "/node_modules/bootstrap/dist/js"));
 app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
+app.use(express.static(path.join(__dirname, "public")));
 
 /*
 Connection on server MySQL
@@ -57,6 +58,20 @@ app.get("/", function (req, res) {
       res.render("pages/index", {
         siteTitle: "Casino App",
         pageTitle: "Welcome Page",
+        items: result,
+      });
+    }
+  );
+});
+
+app.get("/contact", function (req, res) {
+  con.query(
+    "SELECT * FROM e_events ORDER BY e_start_date DESC",
+    function (err, result) {
+      if (err) throw err;
+      res.render("pages/Contact", {
+        siteTitle: "Casino App",
+        pageTitle: "Contact Page",
         items: result,
       });
     }
