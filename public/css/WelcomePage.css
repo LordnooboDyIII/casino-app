@@ -5,6 +5,7 @@ div.welcome-section {
   align-items: center;
   text-align: center;
   height: 100vh;
+  margin-top: 45px;
 }
 
 body {
@@ -18,4 +19,10 @@ a.btn-danger {
   padding: 25px;
   margin: 20px;
   font-weight: 600;
+}
+
+img{
+  margin: 20px;
+  border-radius: 10px;
+  scale: 80%;
 }
