@@ -5,7 +5,7 @@ div.welcome-section {
   align-items: center;
   text-align: center;
   height: 100vh;
-  margin-top: 45px;
+  margin-top: 5px;
 }
 
 body {
@@ -13,6 +13,7 @@ body {
   color: white;
   font-family: "Poppins", sans-serif;
   font-size: 20px;
+  padding-top: 0px;
 }
 
 a.btn-danger {
@@ -24,7 +25,8 @@ a.btn-danger {
 img{
   margin: 10px;
   border-radius: 10px;
-  scale: 80%;
+  height: 390.6px;
+  width: 261px;
 }
 
 nav{
