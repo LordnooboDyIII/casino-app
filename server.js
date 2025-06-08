@@ -83,8 +83,27 @@ app.get("/contact", function (req, res) {
 });
 
 app.get("/Login", function (req, res) {
-  res.render("pages/Login", {
-    siteTitle: "Casino App",
-    pageTitle: "Login",
-  });
+  con.query(
+    "SELECT * FROM e_events ORDER BY e_start_date DESC",
+    function (err, result) {
+      if (err) throw err;
+      res.render("pages/Login", {
+        siteTitle: "Casino App",
+        pageTitle: "Login",
+      });
+    }
+  );
+});
+
+app.get("/Registration", function (req, res) {
+  con.query(
+    "SELECT * FROM e_events ORDER BY e_start_date DESC",
+    function (err, result) {
+      if (err) throw err;
+      res.render("pages/Registration", {
+        siteTitle: "Casino App",
+        pageTitle: "Registration",
+      });
+    }
+  );
 });

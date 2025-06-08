@@ -1,0 +1,87 @@
+body {
+    background: linear-gradient(135deg, #181f1b 0%, #232526 100%);
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    min-height: 100vh;
+}
+
+.register-container {
+    background: rgba(20, 83, 45, 0.10);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    padding: 56px 40px;
+    max-width: 500px;
+    margin: 100px auto;
+    color: #fff;
+}
+
+.register-container h2 {
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.form-control {
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+}
+
+.form-control:focus {
+    background: rgba(255, 255, 255, 0.25);
+    color: #fff;
+    box-shadow: none;
+}
+
+.form-check-input {
+    background-color: #232526;
+    border: 1.5px solid #27ae60;
+}
+
+.form-check-input:checked {
+    background-color: #27ae60;
+    border-color: #27ae60;
+}
+
+.form-check-label {
+    color: #27ae60;
+    font-weight: 500;
+    margin-left: 6px;
+}
+
+.btn-register {
+    background: #27ae60;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-weight: 500;
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    transition: background 0.3s;
+}
+
+.btn-register:hover {
+    background: #14532d;
+}
+
+.register-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.register-links a {
+    color: #27ae60;
+    font-weight: 500;
+    transition: color 0.2s, text-decoration 0.2s;
+    text-decoration: none;
+}
+
+.register-links a:hover {
+    color: #43a047;
+    text-decoration: underline;
+}

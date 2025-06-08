@@ -1,41 +1,50 @@
-<%- include('../partials/header', { siteTitle: "Casino App", pageTitle: "Registration" }) %>
-
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-8 col-lg-6">
-            <div class="card shadow-lg">
-                <div class="card-header bg-primary text-white">
-                    <h2 class="h4 mb-0 text-center">Create Your Account</h2>
-                </div>
-                <div class="card-body p-4">
-                    <form action="/register" method="POST">
-                        <div class="mb-3">
-                            <label for="username" class="form-label">Username</label>
-                            <input type="text" class="form-control form-control-lg" id="username" name="username" required
-                                   placeholder="Enter your username">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="form-label">Email address</label>
-                            <input type="email" class="form-control form-control-lg" id="email" name="email" required
-                                   placeholder="Enter your email">
-                        </div>
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" class="form-control form-control-lg" id="password" name="password" required
-                                   placeholder="Create a password">
-                            <div class="form-text">Minimum 8 characters</div>
-                        </div>
-                        <div class="d-grid gap-2 mt-4">
-                            <button type="submit" class="btn btn-primary btn-lg">Register Now</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="card-footer text-center bg-light">
-                    <p class="mb-0">Already have an account? <a href="/login" class="text-primary">Sign in</a></p>
-                </div>
-            </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include ("../partials/head.ejs") %>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/css/Registration.css">
+</head>
+<body>
+    <%- include ("../partials/navbar.ejs") %>
+    <div class="register-container">
+        <div class="register-icon">
+            <img src="/images/logo.png" alt="Casino Logo"
+                style="width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.15); background: #fff;">
         </div>
+        <h2>Create Your Account</h2>
+        <form action="/register" method="POST">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required placeholder="Enter your username">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required placeholder="Enter your email">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required placeholder="Create a password">
+                <div class="form-text">Minimum 8 characters</div>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required placeholder="Confirm your password">
+            </div>
+            <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="ageCheck" name="ageCheck" required>
+                <label class="form-check-label" for="ageCheck">
+                    I confirm that I am 18 years old or older
+                </label>
+            </div>
+            <button type="submit" class="btn btn-register">Register Now</button>
+            <div class="d-flex justify-content-between mt-3 register-links">
+                <a href="/login">Already have an account?</a>
+            </div>
+        </form>
     </div>
-</div>
-
-<%- include('../partials/footer') %>
+    <%- include('../partials/footer.ejs') %>
+</body>
+</html>
