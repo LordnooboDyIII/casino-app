@@ -1,26 +1,62 @@
-div.container{
-    font-family: "Poppins", "sans-serif";
-    padding: 25px;
-    width: 1000px;
+div.container-main {
+  font-family: "Poppins", "sans-serif";
+  padding: 25px;
+  width: 800px;
+  background: rgba(20, 83, 45, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 40px 30px;
+  margin: 80px auto;
+  color: #fff;
 }
 
-div.submit-button{
-    text-align: center;
+div.submit-button {
+  text-align: center;
 }
 
-h1{
-    padding: 30px;
-    text-align: center;
+h1 {
+  padding: 10px;
+  text-align: center;
 }
 
-a.btn{
-    
-    border-radius: 15px;
-    width: 150px;
-    margin: 30px;
+a.btn {
+  background: #27ae60;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 500;
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  transition: background 0.3s;
 }
 
-label{
-    padding-top: 10px;
-    font-weight: bold;
+a.btn:hover {
+  background: #14532d;
+}
+
+label {
+  padding-top: 10px;
+  color: #27ae60;
+}
+
+body {
+  background: linear-gradient(135deg, #181f1b 0%, #232526 100%);
+  color: #fff;
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+}
+
+.form-control {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+}
+
+.form-control:focus {
+  background: rgba(255, 255, 255, 0.25);
+  color: #fff;
+  box-shadow: none;
 }
