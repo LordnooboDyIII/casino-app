@@ -81,3 +81,10 @@ app.get("/contact", function (req, res) {
     }
   );
 });
+
+app.get("/Login", function (req, res) {
+  res.render("pages/Login", {
+    siteTitle: "Casino App",
+    pageTitle: "Login",
+  });
+});
