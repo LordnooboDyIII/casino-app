@@ -10,12 +10,16 @@ import { body, validationResult } from "express-validator";
 import dateFormat from "dateformat";
 import bcrypt from "bcrypt";
 
-//* Importing Routers
-import contactRouter from "./routes/contact.js";
-
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+//* Importing Routers
+import contactRouter from "./routes/contact.js";
+import usersRouter from "./routes/users.js";
+
+//* Importing Middlewares
+//import errorHandler from "./middleware/errorHandler.js";
 
 /*
 Connect to server
@@ -69,6 +73,9 @@ app.get("/", function (req, res) {
   });
 });
 
+
+//! Instead of this use:
+//* app.use("/auth", usersController);
 app.get("/login", function (req, res) {
   res.render("pages/Login", {
     siteTitle: "Casino App",
@@ -83,7 +90,7 @@ app.get("/registration", function (req, res) {
   });
 });
 
-
+//! Keep these 2 lines in server.js
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
