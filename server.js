@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 import mysql from "mysql";
 import { body, validationResult } from "express-validator";
 import dateFormat from "dateformat";
+import bcrypt from "bcrypt";
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -35,6 +36,7 @@ app.use("/css", express.static(__dirname + "/node_modules/bootstrap/dist/css"));
 Middleware
 */
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: true }));
 
 /*
 Connection on server MySQL
@@ -55,55 +57,65 @@ con.connect(function (err) {
 ROUTES
 */
 app.get("/", function (req, res) {
-  con.query(
-    "SELECT * FROM e_events ORDER BY e_start_date DESC",
-    function (err, result) {
-      if (err) throw err;
-      res.render("pages/index", {
-        siteTitle: "Casino App",
-        pageTitle: "Welcome Page",
-        items: result,
-      });
-    }
-  );
+  res.render("pages/index", {
+    siteTitle: "Casino App",
+    pageTitle: "Welcome Page",
+  });
 });
+
 
 app.get("/contact", function (req, res) {
-  con.query(
-    "SELECT * FROM e_events ORDER BY e_start_date DESC",
-    function (err, result) {
-      if (err) throw err;
-      res.render("pages/Contact", {
-        siteTitle: "Casino App",
-        pageTitle: "Contact Page",
-        items: result,
-      });
-    }
-  );
+  res.render("pages/Contact", {
+    siteTitle: "Casino App",
+    pageTitle: "Contact Page",
+  });
 });
 
-app.get("/Login", function (req, res) {
-  con.query(
-    "SELECT * FROM e_events ORDER BY e_start_date DESC",
-    function (err, result) {
-      if (err) throw err;
-      res.render("pages/Login", {
-        siteTitle: "Casino App",
-        pageTitle: "Login",
-      });
-    }
-  );
+app.get("/login", function (req, res) {
+  res.render("pages/Login", {
+    siteTitle: "Casino App",
+    pageTitle: "Login",
+  });
 });
 
-app.get("/Registration", function (req, res) {
-  con.query(
-    "SELECT * FROM e_events ORDER BY e_start_date DESC",
-    function (err, result) {
-      if (err) throw err;
-      res.render("pages/Registration", {
-        siteTitle: "Casino App",
-        pageTitle: "Registration",
-      });
+app.get("/registration", function (req, res) {
+  res.render("pages/Registration", {
+    siteTitle: "Casino App",
+    pageTitle: "Registration",
+  });
+});
+
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post("/register", async function (req, res) {
+  const { username, email, password, confirmPassword } = req.body;
+
+
+  const checkQuery = "SELECT * FROM users WHERE email = ? OR username = ?";
+  con.query(checkQuery, [email, username], async function (err, result) {
+    if (err) {
+      console.error("Database check error:", err);
+
     }
-  );
+
+    if (result.length > 0) {
+      return res.status(400).json({ success: false, error: "Username or email already exists." });
+    }
+
+    try {
+      const hashedPassword = await bcrypt.hash(password, 10);
+
+      const insertQuery = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+      con.query(insertQuery, [username, email, hashedPassword], function (err, result) {
+        console.log(" New user registered:", { username, email });
+        res.redirect("/");
+
+
+      });
+    } catch (err) {
+      console.error("Hashing error:", err);
+    }
+  });
 });
