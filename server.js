@@ -9,6 +9,10 @@ import mysql from "mysql";
 import { body, validationResult } from "express-validator";
 import dateFormat from "dateformat";
 import bcrypt from "bcrypt";
+
+//* Importing Routers
+import contactRouter from "./routes/contact.js";
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -56,18 +60,12 @@ con.connect(function (err) {
 /*
 ROUTES
 */
+app.use("/contact", contactRouter);
+
 app.get("/", function (req, res) {
   res.render("pages/index", {
     siteTitle: "Casino App",
     pageTitle: "Welcome Page",
-  });
-});
-
-
-app.get("/contact", function (req, res) {
-  res.render("pages/Contact", {
-    siteTitle: "Casino App",
-    pageTitle: "Contact Page",
   });
 });
 
