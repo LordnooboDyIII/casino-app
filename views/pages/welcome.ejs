@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") -%>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/welcome-page.css">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+        <title>Welcome To Grow A Gambler</title>
+</head>
+
+<body>
+    <%- include("../partials/navbar.ejs") -%>
+        <div class="container">
+            <div class="welcome-container">
+                <div class="welcome-register">
+                    <h1>Welcome To Grow A Gambler</h1>
+                    <p>Hop In</p>
+                    <a href="/register">Register Now</a>
+                    <p>Have An Account?</p>
+                    <a href="/login">Login</a>
+                </div>
+                <div class="register-image">
+                    <img src="/images/logo.png" alt="welcome image">
+                </div>
+            </div>
+            <div class="welcome-spin">
+                <a href="/spin/daily">
+                    <div class="daily">
+                        <h5>Daily Spin </h5>
+                        <p>Spin The Wheel To Gain Free Rewards</p>
+                    </div>
+                </a>
+                <a href="/spin/weekly">
+                    <div class="weekly">
+                        <h5>Weekly Spin</h5>
+                        <p>Gain Bigger Rewards Every Week</p>
+                    </div>
+                </a>
+            </div>
+            <div class="welcome-casino">
+                <span>🎰</span>
+                <a href="/games">
+                    <div class="casino">
+                        <h5>Play Now</h5>
+                        <p>Try Out Your Luck</p>
+                    </div>
+                </a>
+                <span>🍀</span>
+            </div>
+            <div class="welcome-text">
+                <h1>👋 Greetings Fellow Gambler</h1>
+                <p>Welcome to Grow a Gambler 🌿🎲 <br>
+                    Where your luck sprouts from the ground up.<br>
+                    <br>
+                    Play casino classics like Blackjack, Slots, and Roulette — no pressure, no real money, just pure
+                    fun.
+                    <br>
+                    🎉 Get free starter tokens when you sign up<br>
+                    🃏 Practice your skills in a no-risk environment<br>
+                    🌱 Level up your gambler from seed to legend
+                </p>
+
+                <h1>🏆 Why Grow a Gambler Stands Out</h1>
+                <p>Most casino games are all flash and no growth — win or lose, you walk away the same.<br>
+                    Grow a Gambler flips the script. We focus on helping you learn, improve, and actually get better at
+                    the games you love.<br>
+                    Our platform rewards smart play, tracks your progress, and gives you room to grow — all in a
+                    stress-free, no-risk
+                    environment.<br>
+                    Whether you're here to relax, sharpen your skills, or compete with friends, there's no app that
+                    gives you this much
+                    control over your own gambler's journey.</p>
+
+                <h1>🎁 Rewards Without the Risk</h1>
+                <p>You'll never have to spend a cent.<br>
+                    Daily bonuses, skill-based achievements, and surprise rewards keep the fun going.<br>
+                    The only thing you're betting is your pride — and a few digital tokens.</p>
+            </div>
+
+            <!--! Leaderboard to add -->
+        </div>
+</body>
+
+<%- include("../partials/footer.ejs") -%>
+
+</html>

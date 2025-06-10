@@ -1,0 +1,128 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #181f1b 0%, #232526 100%);
+  min-height: 100vh;
+  color: #f2e9dc;
+}
+
+div.container {
+  width: 75%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+div.welcome-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(20, 83, 45, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+div.welcome-register {
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+div.welcome-register p {
+  margin-top: 25px;
+  margin-bottom: 5px;
+}
+
+div.welcome-register a {
+  display: block;
+  background: #27ae60;
+  border: none;
+  border-radius: 10px;
+  color: #f2e9dc;
+  font-weight: 500;
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px;
+  transition: background 0.3s;
+  text-decoration: none;
+}
+
+div.welcome-register a:hover {
+  background: #14532d;
+}
+
+div.welcome-register h1 {
+  font-size: 30px;
+}
+
+div.welcome-container img {
+  height: 250px;
+  width: 250px;
+  margin: 0;
+}
+
+div.welcome-spin {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(20, 83, 45, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+div.welcome-spin a {
+  background: #c2542b;
+  border: none;
+  border-radius: 10px;
+  color: #f2e9dc;
+  font-weight: 500;
+  width: 100%;
+  padding: 12px;
+  margin: 10px;
+  transition: background 0.3s;
+  text-decoration: none;
+}
+
+div.welcome-spin a:hover {
+  background: #a43913;
+}
+
+div.welcome-casino {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(20, 83, 45, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+div.welcome-casino span{
+    font-size: 80px;
+}
+
+div.welcome-casino a {
+  background: #d4af37;
+  border: none;
+  border-radius: 10px;
+  color: #f2e9dc;
+  font-weight: 500;
+  padding: 12px;
+  margin: 10px;
+  transition: background 0.3s;
+  text-decoration: none;
+  text-align: center;
+  width: 40%;
+}
+
+div.welcome-casino a:hover {
+    background: #9f811e;
+  }
+
+div.welcome-text h1 {
+  margin-top: 30px;
+  font-size: 30px;
+}

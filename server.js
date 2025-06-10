@@ -45,6 +45,8 @@ Middleware
 */
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 /*
 Connection on server MySQL
@@ -67,7 +69,7 @@ ROUTES
 app.use("/contact", contactRouter);
 
 app.get("/", function (req, res) {
-  res.render("pages/index", {
+  res.render("pages/welcome", {
     siteTitle: "Casino App",
     pageTitle: "Welcome Page",
   });
@@ -89,10 +91,6 @@ app.get("/registration", function (req, res) {
     pageTitle: "Registration",
   });
 });
-
-//! Keep these 2 lines in server.js
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 
 app.post("/register", async function (req, res) {
   const { username, email, password, confirmPassword } = req.body;
