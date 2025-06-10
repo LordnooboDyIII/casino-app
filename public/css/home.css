@@ -1,0 +1,41 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #181f1b 0%, #232526 100%);
+    min-height: 100vh;
+    color: #f2e9dc;
+  }
+  
+  div.container {
+    width: 75%;
+    margin-top: 20px;
+    margin-bottom: 40px;
+  }
+
+  div.casino-spin {
+    display: flex;
+    justify-content: space-around;
+    background-color: rgba(20, 83, 45, 0.1);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    backdrop-filter: blur(6px);
+    margin-bottom: 30px;
+  }
+  
+  div.casino-spin a {
+    background: #c2542b;
+    border: none;
+    border-radius: 10px;
+    color: #f2e9dc;
+    font-weight: 500;
+    width: 100%;
+    padding: 12px;
+    margin: 10px;
+    transition: background 0.3s;
+    text-decoration: none;
+  }
+  
+  div.casino-spin a:hover {
+    background: #a43913;
+  }
+  

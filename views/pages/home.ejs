@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") -%>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/home.css">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+        <title>Home Page</title>
+</head>
+
+<body>
+    <%- include("../partials/navbar.ejs") -%>
+
+        <div class="container">
+            <div class="casino-spin">
+                <a href="/spin/daily">
+                    <div class="daily">
+                        <h5>Daily Spin </h5>
+                        <p>Spin The Wheel To Gain Free Rewards</p>
+                    </div>
+                </a>
+                <a href="/spin/weekly">
+                    <div class="weekly">
+                        <h5>Weekly Spin</h5>
+                        <p>Gain Bigger Rewards Every Week</p>
+                    </div>
+                </a>
+            </div>
+            <div class="casino-games">
+                <h5>Popular Games</h5>
+                <div class="game-select">
+                    
+                </div>
+            </div>
+            <div class="casino-games">
+                <h5>Other Games</h5>
+                <div class="game-select">
+            
+                </div>
+            </div>
+            <!--! Leaderboard thingy -->
+
+        </div>
+
+</body>
+
+<%- include("../partials/footer.ejs") -%>
+
+</html>
