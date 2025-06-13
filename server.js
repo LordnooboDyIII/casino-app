@@ -18,6 +18,8 @@ const __dirname = path.dirname(__filename);
 import contactRouter from "./routes/contact.js";
 import usersRouter from "./routes/users.js";
 import indexRouter from "./routes/index.js";
+import dicesRouter from "./routes/dices.js";
+
 
 //* Importing Middlewares
 //import errorHandler from "./middleware/errorHandler.js";
@@ -68,6 +70,10 @@ con.connect(function (err) {
 */
 app.use("/contact", contactRouter);
 app.use("/", indexRouter);
+
+
+app.use("/games/dices", dicesRouter);
+
 
 //! Instead of this use:
 //app.use("/auth", usersRouter);
