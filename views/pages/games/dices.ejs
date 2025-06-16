@@ -3,37 +3,38 @@
 
 <head>
     <%- include("../../partials/head.ejs") %>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Dice Game</title>
-        <link rel="stylesheet" href="/css/dice.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dice Game</title>
+    <link rel="stylesheet" href="/css/dice.css">
 </head>
 
 <body>
     <%- include("../../partials/navbar.ejs") %>
 
-        <main class="dice-container">
-            <h1>🎲 Dice Game</h1>
-            <p>Clique pour lancer les dés !</p>
+    <main class="dice-container">
+        <h1>🎲 Dice Game</h1>
+        <p>Clique pour lancer les dés !</p>
 
-            <div class="dice-display">
-                <div class="dice" id="dice">
-                    <div class="face face1">1</div>
-                    <div class="face face2">2</div>
-                    <div class="face face3">3</div>
-                    <div class="face face4">4</div>
-                    <div class="face face5">5</div>
-                    <div class="face face6">6</div>
-                </div>
+        <div class="dice-display">
+            <div class="dice" id="dice">
+                <div class="face face1">1</div>
+                <div class="face face2">2</div>
+                <div class="face face3">3</div>
+                <div class="face face4">4</div>
+                <div class="face face5">5</div>
+                <div class="face face6">6</div>
             </div>
+        </div>
 
-            <button id="roll-button">Lancer 🎲</button>
+        <button id="roll-button">Lancer 🎲</button>
+        <button id="reset-button" style="display: none;">Réinitialiser 🎲</button>
 
-            <div id="dice-result" class="dice-result"></div>
-        </main>
+        <div id="dice-result" class="dice-result"></div>
+    </main>
 
-        <%- include("../../partials/footer.ejs") %>
-            <script src="../../javascript/diceGame.js"></script>
+    <%- include("../../partials/footer.ejs") %>
+    <script src="../../javascript/diceGame.js"></script>
 </body>
 
 </html>
