@@ -15,4 +15,11 @@ router.get("/login", usersController.getLoginPage);
 // POST Login
 router.post("/login", usersController.handleLogin);
 
+router.post("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
+
+
 export default router;

@@ -47,6 +47,7 @@ export const getLoginPage = (req, res) => {
   res.render("pages/Login", {
     siteTitle: "Casino App",
     pageTitle: "Login Page",
+    user: req.session.user || null
   });
 };
 
