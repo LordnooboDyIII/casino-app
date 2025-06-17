@@ -1,6 +1,6 @@
+import bcrypt from "bcrypt";
 import * as userModel from "../models/usersModel.js";
 import { validationResult } from "express-validator";
-import bcrypt from "bcrypt";
 
 // Get Registration Page
 export const getRegistrationPage = (req, res) => {
@@ -35,9 +35,46 @@ export const handleRegistration = async (req, res) => {
     console.log("New user registered:", { username, email });
 
     // Redirect to login page after successful registration
-    res.redirect("/"); // Redirect here after successful registration
+    res.redirect("/login");
   } catch (err) {
     console.error("Hashing error:", err);
+    res.status(500).json({ success: false, error: "Internal server error" });
+  }
+};
+
+// Get Login Page
+export const getLoginPage = (req, res) => {
+  res.render("pages/Login", {
+    siteTitle: "Casino App",
+    pageTitle: "Login Page",
+  });
+};
+
+// Handle Login
+export const handleLogin = async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if the user exists
+    const user = await userModel.findUserByEmailOrUsername(null, username);
+    if (!user) {
+      return res.status(400).json({ success: false, error: "Invalid username or password." });
+    }
+
+    // Compare passwords
+    const match = await bcrypt.compare(password, user.password);
+    if (!match) {
+      return res.status(400).json({ success: false, error: "Invalid username or password." });
+    }
+
+    // Set user in session
+    req.session.user = user; // Store the user in session
+    console.log(`User ${username} successfully signed in at ${new Date().toLocaleString()}`);
+
+    res.redirect("/"); 
+
+  } catch (err) {
+    console.error("Login error:", err);
     res.status(500).json({ success: false, error: "Internal server error" });
   }
 };

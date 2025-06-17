@@ -52,6 +52,15 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(
+  session({
+    secret: "your_secret_key", // Change this secret key to something random and secure
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Set to true if using HTTPS
+  })
+);
+
 
 /*
 //* Connection on server MySQL
@@ -76,7 +85,7 @@ app.use("/", indexRouter);
 
 
 app.use("/games/dices", dicesRouter);
-app.use("/registration", usersRouter); 
+app.use("/", usersRouter);
 
 //! Instead of this use:
 //app.use("/auth", usersRouter);
