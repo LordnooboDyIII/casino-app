@@ -58,20 +58,28 @@ export const handleLogin = async (req, res) => {
     // Check if the user exists
     const user = await userModel.findUserByEmailOrUsername(null, username);
     if (!user) {
-      return res.status(400).json({ success: false, error: "Invalid username or password." });
+      return res.status(400).json({
+        success: false,
+        error: "Invalid username or password.",
+        field: "username", // Indicate the field causing the error
+      });
     }
 
     // Compare passwords
     const match = await bcrypt.compare(password, user.password);
     if (!match) {
-      return res.status(400).json({ success: false, error: "Invalid username or password." });
+      return res.status(400).json({
+        success: false,
+        error: "Invalid username or password.",
+        field: "password", // Indicate the field causing the error
+      });
     }
 
     // Set user in session
     req.session.user = user; // Store the user in session
     console.log(`User ${username} successfully signed in at ${new Date().toLocaleString()}`);
 
-    res.redirect("/"); 
+    res.json({ success: true });
 
   } catch (err) {
     console.error("Login error:", err);

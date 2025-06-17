@@ -19,16 +19,24 @@
                     style="width: 80px; height: 80px; border-radius: 50%; box-shadow: 0 4px 16px rgba(0,0,0,0.15); background: #fff;">
             </div>
             <h2>Sign In to Casino</h2>
-            <form action="/login" method="POST">
+            <form action="/login" method="POST" id="login-form">
                 <div class="mb-3">
                     <label for="username" class="form-label">Username</label>
                     <input type="text" class="form-control" id="username" name="username" required
                         autocomplete="username">
+                    <!-- Error message for username -->
+                    <div id="username-error" class="form-text" style="color:#e74c3c; display:none; text-align:center;">
+                        Invalid username or password.
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Password</label>
                     <input type="password" class="form-control" id="password" name="password" required
                         autocomplete="current-password">
+                    <!-- Error message for password -->
+                    <div id="password-error" class="form-text" style="color:#e74c3c; display:none; text-align:center;">
+                        Invalid username or password.
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-login">Sign In</button>
                 <div class="d-flex justify-content-between mt-3 login-links">
@@ -39,6 +47,7 @@
         </div>
         <%- include ("../partials/footer.ejs") %>
 
+        <script src="/javascript/login.js"></script>
 </body>
 
 </html>
