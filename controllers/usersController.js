@@ -35,7 +35,7 @@ export const handleRegistration = async (req, res) => {
     console.log("New user registered:", { username, email });
 
     // Redirect to login page after successful registration
-    res.redirect("/login");
+    res.json({ success: true });
   } catch (err) {
     console.error("Hashing error:", err);
     res.status(500).json({ success: false, error: "Internal server error" });
