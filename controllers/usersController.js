@@ -7,6 +7,7 @@ export const getRegistrationPage = (req, res) => {
   res.render("pages/Registration", {
     siteTitle: "Casino App",
     pageTitle: "Registration Page",
+    user: req.session.user || null // <-- Add this line
   });
 };
 
