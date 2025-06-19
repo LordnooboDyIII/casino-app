@@ -12,6 +12,7 @@ import bcrypt from "bcrypt";
 
 
 
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -21,6 +22,8 @@ import contactRouter from "./routes/contact.js";
 import usersRouter from "./routes/users.js";
 import indexRouter from "./routes/index.js";
 import dicesRouter from "./routes/dices.js";
+import profileRouter from "./routes/profile.js";
+
 
 
 //* Importing Middlewares
@@ -86,6 +89,8 @@ app.use("/", indexRouter);
 
 app.use("/games/dices", dicesRouter);
 app.use("/", usersRouter);
+app.use("/profile", profileRouter);
+
 
 //! Instead of this use:
 //app.use("/auth", usersRouter);
