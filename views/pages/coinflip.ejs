@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("../partials/head.ejs") -%>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="/css/coinflip.css">
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+        <title>Coin Flip Game</title>
+</head>
+<body>
+    <%- include("../partials/navbar.ejs") -%>
+
+    <div class="container">
+        <div class="main">
+            <h2>Coin Flip</h2>
+            <div id="coinflip-game">
+                <div id="coinflip-bet-section">
+                    <label for="bet-amount" class="bet-label">Bet Amount:</label>
+                    <div class="bet-input-group">
+                        <input type="number" id="bet-amount" min="1" placeholder="0$" class="bet-input" />
+                        <div class="bet-quick-btns">
+                            <button type="button" class="bet-quick-btn" data-amount="10">$10</button>
+                            <button type="button" class="bet-quick-btn" data-amount="50">$50</button>
+                            <button type="button" class="bet-quick-btn" data-amount="100">$100</button>
+                            <button type="button" class="bet-quick-btn" data-amount="max">Max</button>
+                        </div>
+                    </div>
+                </div>
+                <div id="coinflip-choices">
+                    <button id="bet-heads" class="bet-btn">Heads</button>
+                    <button id="bet-tails" class="bet-btn">Tails</button>
+                </div>
+                <div id="coinflip-coin">
+                    <img id="coin-img" src="/images/coin-heads.png" alt="Coin" width="120" />
+                </div>
+                <div id="coinflip-result"></div>
+                <button id="flip-btn" disabled>Flip Coin</button>
+            </div>
+        </div>
+    </div>
+    <script src="/javascript/coinflip.js"></script>
+</body>
+<%- include("../partials/footer.ejs") -%>
+</html>

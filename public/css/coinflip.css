@@ -1,0 +1,120 @@
+body {
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #181f1b 0%, #232526 100%);
+  min-height: 100vh;
+  color: #f2e9dc;
+}
+
+div.container {
+  width: 70%;
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+
+div.main {
+  text-align: center;
+  background-color: rgba(20, 83, 45, 0.1);
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  backdrop-filter: blur(6px);
+  margin-bottom: 30px;
+}
+
+.bet-btn.selected {
+  background: #22c55e;
+  color: #fff;
+}
+.bet-btn {
+  margin: 0 10px;
+  padding: 10px 30px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background: #232526;
+  color: #f2e9dc;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.bet-btn:hover {
+  background: #14532d;
+}
+#flip-btn {
+  margin-top: 20px;
+  padding: 10px 40px;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  border: none;
+  background: #c2542b;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+#flip-btn:disabled {
+  background: #888;
+  cursor: not-allowed;
+}
+#coinflip-result {
+  margin-top: 18px;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+#coin-img {
+  transition: transform 0.2s cubic-bezier(0.4, 2, 0.6, 1);
+  will-change: transform;
+}
+
+#coinflip-bet-section {
+    margin-bottom: 18px;
+    text-align: center;
+}
+.bet-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-right: 10px;
+    color: #ffd700;
+    letter-spacing: 1px;
+}
+.bet-input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.bet-input {
+    width: 120px;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 2px solid #ffd700;
+    background: #232526;
+    color: #fff;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-bottom: 6px;
+    outline: none;
+    transition: border 0.2s;
+}
+.bet-input:focus {
+    border: 2px solid #22c55e;
+}
+.bet-quick-btns {
+    display: flex;
+    gap: 10px;
+}
+.bet-quick-btn {
+    background: #232526;
+    color: #ffd700;
+    border: 2px solid #ffd700;
+    border-radius: 8px;
+    padding: 6px 18px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.bet-quick-btn:hover, .bet-quick-btn.active {
+    background: #ffd700;
+    color: #232526;
+    border: 2px solid #22c55e;
+}
