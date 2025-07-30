@@ -10,9 +10,6 @@ import { body, validationResult } from "express-validator";
 import dateFormat from "dateformat";
 import bcrypt from "bcrypt";
 
-
-
-
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -84,12 +81,9 @@ con.connect(function (err) {
 */
 app.use("/contact", contactRouter);
 app.use("/", indexRouter);
-
-
 app.use("/games/dices", dicesRouter);
 app.use("/", usersRouter);
 app.use("/profile", profileRouter);
-
 app.use("/games", gamesRouter);
 
 //! Instead of this use:
