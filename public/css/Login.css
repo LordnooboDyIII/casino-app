@@ -79,3 +79,12 @@
     color: #43a047;
     text-decoration: underline;
 }
+
+
+.is-invalid {
+    border: 2px solid #e74c3c;  /* Red border for invalid input */
+}
+
+.is-invalid:focus {
+    border-color: #e74c3c;  /* Red border color when input is focused */
+}

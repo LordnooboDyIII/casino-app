@@ -3,13 +3,23 @@ import * as usersController from "../controllers/usersController.js";
 
 const router = Router();
 
-//* Getting the login page
+// GET Registration Page
+router.get("/registration", usersController.getRegistrationPage);
+
+// POST Registration
+router.post("/registration", usersController.handleRegistration);
+
+// GET Login Page
 router.get("/login", usersController.getLoginPage);
 
-//* GET Registration Page
-router.get("/registration", usersController.getRegistrationPage)
+// POST Login
+router.post("/login", usersController.handleLogin);
 
-//* POST Registration
-router.post("registration", usersController.handleRegistration);
+router.post("/logout", (req, res) => {
+  req.session.destroy(() => {
+    res.redirect("/");
+  });
+});
+
 
 export default router;

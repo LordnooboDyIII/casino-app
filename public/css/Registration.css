@@ -85,3 +85,9 @@ body {
     color: #43a047;
     text-decoration: underline;
 }
+
+/* Red border for invalid input */
+.input-error {
+    border: 2px solid #e74c3c !important;
+    box-shadow: 0 0 4px #e74c3c33;
+}

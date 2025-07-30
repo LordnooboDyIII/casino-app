@@ -10,6 +10,9 @@ import { body, validationResult } from "express-validator";
 import dateFormat from "dateformat";
 import bcrypt from "bcrypt";
 
+
+
+
 const app = express();
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -18,6 +21,8 @@ const __dirname = path.dirname(__filename);
 import contactRouter from "./routes/contact.js";
 import usersRouter from "./routes/users.js";
 import indexRouter from "./routes/index.js";
+import dicesRouter from "./routes/dices.js";
+import profileRouter from "./routes/profile.js";
 import gamesRouter from "./routes/game.js";
 
 //* Importing Middlewares
@@ -49,6 +54,16 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.use(
+  session({
+    secret: "your_secret_key", // Change this secret key to something random and secure
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false }, // Set to true if using HTTPS
+  })
+);
+
+
 /*
 //* Connection on server MySQL
 */
@@ -69,51 +84,15 @@ con.connect(function (err) {
 */
 app.use("/contact", contactRouter);
 app.use("/", indexRouter);
+
+
+app.use("/games/dices", dicesRouter);
+app.use("/", usersRouter);
+app.use("/profile", profileRouter);
+
 app.use("/games", gamesRouter);
 
 //! Instead of this use:
 //app.use("/auth", usersRouter);
-app.get("/login", function (req, res) {
-  res.render("pages/Login", {
-    siteTitle: "Casino App",
-    pageTitle: "Login",
-  });
-});
-
-app.get("/registration", function (req, res) {
-  res.render("pages/Registration", {
-    siteTitle: "Casino App",
-    pageTitle: "Registration",
-  });
-});
-
-app.post("/register", async function (req, res) {
-  const { username, email, password, confirmPassword } = req.body;
 
 
-  const checkQuery = "SELECT * FROM users WHERE email = ? OR username = ?";
-  con.query(checkQuery, [email, username], async function (err, result) {
-    if (err) {
-      console.error("Database check error:", err);
-
-    }
-
-    if (result.length > 0) {
-      return res.status(400).json({ success: false, error: "Username or email already exists." });
-    }
-
-    try {
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const insertQuery = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
-      con.query(insertQuery, [username, email, hashedPassword], function (err, result) {
-        console.log(" New user registered:", { username, email });
-        res.redirect("/");
-
-
-      });
-    } catch (err) {
-      console.error("Hashing error:", err);
-    }
-  });
-});
