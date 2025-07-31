@@ -1,22 +1,78 @@
+:root {
+    --primary: #6c5ce7;
+    --secondary: #a29bfe;
+    --dark: #2d3436;
+    --light: #f5f6fa;
+    --success: #00b894;
+    --danger: #d63031;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
 
 body {
-    font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #181f1b 0%, #232526 100%);
-    min-height: 100vh;
-    color: #f2e9dc;
-  }
-  
-.dice-container {
-    text-align: center;
-    margin-top: 50px;
     font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e1e2f 0%, #2d2d44 100%);
+    min-height: 100vh;
+    color: var(--light);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    max-width: 500px;
+    margin: 2rem auto;
+    background: rgba(45, 52, 54, 0.9);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.header h1 {
+    font-size: 2.5rem;
+    margin: 0;
+    background: linear-gradient(to right, #a29bfe, #6c5ce7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+}
+
+.header p {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin: 0.5rem 0 0;
+}
+
+.game-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
 }
 
 .dice-display {
     width: 150px;
     height: 150px;
-    margin: 20px auto;
     perspective: 800px;
+    margin: 1rem 0;
+    filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
 }
 
 .dice {
@@ -24,7 +80,7 @@ body {
     height: 150px;
     position: relative;
     transform-style: preserve-3d;
-    transition: transform 2s ease;
+    transition: transform 1s ease-out;
     margin: 0 auto;
     cursor: pointer;
 }
@@ -33,8 +89,9 @@ body {
     position: absolute;
     width: 150px;
     height: 150px;
-    background: white;
+    background: linear-gradient(145deg, #ffffff, #e6e6e6);
     border: 2px solid #2c3e50;
+    border-radius: 15px;
     font-size: 72px;
     font-weight: bold;
     color: #2c3e50;
@@ -42,10 +99,11 @@ body {
     justify-content: center;
     align-items: center;
     user-select: none;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1), 
+                0 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Position the 6 faces correctly */
+/* Dice face positions - unchanged from original */
 .face1 { transform: rotateY(0deg) translateZ(75px); }
 .face2 { transform: rotateY(90deg) translateZ(75px); }
 .face3 { transform: rotateY(180deg) translateZ(75px); }
@@ -53,31 +111,147 @@ body {
 .face5 { transform: rotateX(90deg) translateZ(75px); }
 .face6 { transform: rotateX(-90deg) translateZ(75px); }
 
-/* Button styles */
-#roll-button, #reset-button {
-    padding: 10px 20px;
-    font-size: 18px;
-    background-color: #2c3e50;
-    color: white;
+.controls {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.btn {
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
     border: none;
-    border-radius: 10px;
+    border-radius: 50px;
     cursor: pointer;
-    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: var(--transition);
+    box-shadow: var(--shadow);
+    min-width: 160px;
+    justify-content: center;
 }
 
-#roll-button:hover, #reset-button:hover {
-    background-color: #34495e;
+.btn.roll-btn {
+    background: var(--primary);
+    color: white;
 }
 
-#reset-button {
-    background-color: #e74c3c;
+.btn.reset-btn {
+    background: var(--danger);
+    color: white;
 }
 
-#reset-button:hover {
-    background-color: #c0392b;
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+    transform: translateY(1px);
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
 }
 
 .dice-result {
-    font-size: 24px;
-    margin-top: 20px;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 1rem 0;
+    color: var(--secondary);
+    min-height: 2.5rem;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    width: 100%;
+}
+
+.stat-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 100px;
+    box-shadow: var(--shadow);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.3rem;
+}
+
+.stat-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: white;
+}
+
+/* Animation for rolling 6 */
+@keyframes celebrate {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.celebrate {
+    animation: celebrate 0.5s ease 2;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+    .container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .dice-display {
+        width: 130px;
+        height: 130px;
+    }
+    
+    .face {
+        width: 130px;
+        height: 130px;
+        font-size: 60px;
+    }
+    
+    .face1 { transform: rotateY(0deg) translateZ(65px); }
+    .face2 { transform: rotateY(90deg) translateZ(65px); }
+    .face3 { transform: rotateY(180deg) translateZ(65px); }
+    .face4 { transform: rotateY(-90deg) translateZ(65px); }
+    .face5 { transform: rotateX(90deg) translateZ(65px); }
+    .face6 { transform: rotateX(-90deg) translateZ(65px); }
+    
+    .stats {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .stat-box {
+        width: 100%;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 200px;
+    }
 }

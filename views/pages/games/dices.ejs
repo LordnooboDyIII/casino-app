@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <%- include("../../partials/head.ejs") %>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dice Game</title>
     <link rel="stylesheet" href="/css/dice.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
 </head>
-
 <body>
     <%- include("../../partials/navbar.ejs") %>
 
-    <main class="dice-container">
-        <h1>🎲 Dice Game</h1>
-        <p>Clique pour lancer les dés !</p>
-
-        <div class="dice-display">
-            <div class="dice" id="dice">
-                <div class="face face1">1</div>
-                <div class="face face2">2</div>
-                <div class="face face3">3</div>
-                <div class="face face4">4</div>
-                <div class="face face5">5</div>
-                <div class="face face6">6</div>
+    <main class="container animate__animated animate__fadeIn">
+        <div class="main">
+            <div class="header">
+                <h1>🎲 Dice Roller</h1>
+                <p>Click to roll the dice!</p>
+            </div>
+            
+            <div class="game-container">
+                <div class="dice-display">
+                    <div class="dice" id="dice">
+                        <div class="face face1">1</div>
+                        <div class="face face2">2</div>
+                        <div class="face face3">3</div>
+                        <div class="face face4">4</div>
+                        <div class="face face5">5</div>
+                        <div class="face face6">6</div>
+                    </div>
+                </div>
+                
+                <div class="controls">
+                    <button id="action-button" class="btn roll-btn">
+                        <span class="btn-text">Roll Dice</span>
+                        <span class="btn-icon">🎲</span>
+                    </button>
+                </div>
+                
+                <div id="dice-result" class="dice-result"></div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-box">
+                    <span class="stat-label">Rolls:</span>
+                    <span id="roll-count" class="stat-value">0</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Last Result:</span>
+                    <span id="last-result" class="stat-value">-</span>
+                </div>
             </div>
         </div>
-
-        <button id="roll-button">Lancer 🎲</button>
-        <button id="reset-button" style="display: none;">Réinitialiser 🎲</button>
-
-        <div id="dice-result" class="dice-result"></div>
     </main>
 
     <%- include("../../partials/footer.ejs") %>
     <script src="../../javascript/diceGame.js"></script>
 </body>
-
 </html>

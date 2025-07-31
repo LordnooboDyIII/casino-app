@@ -1,63 +1,101 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const dice = document.getElementById("dice");
     const resultDisplay = document.getElementById("dice-result");
-    const rollButton = document.getElementById("roll-button");
-    const resetButton = document.getElementById("reset-button");
+    const actionButton = document.getElementById("action-button");
+    const rollCountDisplay = document.getElementById("roll-count");
+    const lastResultDisplay = document.getElementById("last-result");
 
-    // Define rotation for each face based on dice roll
+    // Dice face rotations (unchanged from original)
     const rotations = {
         1: { x: 0, y: 0 },
         2: { x: 0, y: -90 },
         3: { x: 0, y: -180 },
         4: { x: 0, y: 90 },
-        5: { x: 90, y: 0 },
-        6: { x: -90, y: 0 }
+        5: { x: -90, y: 0 },
+        6: { x: 90, y: 0 }
     };
 
     let currentX = 0;
     let currentY = 0;
+    let rollCount = 0;
+    let lastResult = null;
+    let isRolling = false;
 
-    // Roll Button Click Event
-    rollButton.addEventListener("click", () => {
-        rollButton.style.display = "none";  // Hide the "Lancer" button
-        resetButton.style.display = "inline-block";  // Show the "Réinitialiser" button
+    function setButtonToRoll() {
+        actionButton.className = "btn roll-btn";
+        actionButton.innerHTML = '<span class="btn-text">Roll Dice</span><span class="btn-icon">🎲</span>';
+    }
 
-        resultDisplay.innerText = "";
+    function setButtonToReset() {
+        actionButton.className = "btn reset-btn";
+        actionButton.innerHTML = '<span class="btn-text">Reset</span><span class="btn-icon">🔄</span>';
+    }
+
+    function rollDice() {
+        isRolling = true;
+        actionButton.disabled = true;
+        resultDisplay.textContent = "";
+        lastResultDisplay.textContent = "Rolling...";
 
         const roll = Math.floor(Math.random() * 6) + 1;
         const { x, y } = rotations[roll];
 
-        const spinsX = 360 * 4; // This ensures multiple rotations for better animation
+        const spinsX = 360 * 4;
         const spinsY = 360 * 4;
 
         currentX += spinsX + x;
         currentY += spinsY + y;
 
-        // Randomize the duration of the animation (between 1s and 3s)
         const randomDuration = Math.random() * (3 - 1) + 1;
 
-        // Apply the rotation to the dice
-        dice.style.transition = `transform ${randomDuration}s ease`;
+        dice.style.transition = `transform ${randomDuration}s ease-out`;
         dice.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+
+        // Update roll count immediately
+        rollCount++;
+        rollCountDisplay.textContent = rollCount;
 
         setTimeout(() => {
-            resultDisplay.innerText = `🎲 Résultat : ${roll}`;
+            // Update after animation completes
+            lastResult = roll;
+            resultDisplay.textContent = `You rolled: ${roll}`;
+            lastResultDisplay.textContent = roll;
+            
+            isRolling = false;
+            setButtonToReset();
+            actionButton.disabled = false;
+            
+            // Celebration for rolling a 6
+            if (roll === 6) {
+                resultDisplay.classList.add("celebrate");
+                setTimeout(() => {
+                    resultDisplay.classList.remove("celebrate");
+                }, 1000);
+            }
         }, randomDuration * 1000);
-    });
+    }
 
-    // Reset Button Click Event
-    resetButton.addEventListener("click", () => {
-        // Reset the dice to initial position
+    function resetDice() {
         currentX = 0;
         currentY = 0;
-        dice.style.transition = "transform 1s ease";  // Smooth transition back to initial position
-        dice.style.transform = `rotateX(${currentX}deg) rotateY(${currentY}deg)`;
+        dice.style.transition = "transform 1s ease-out";
+        dice.style.transform = "rotateX(0deg) rotateY(0deg)";
+        resultDisplay.textContent = "";
+        lastResultDisplay.textContent = "-";
+        setButtonToRoll();
+    }
 
-        // Clear the result display
-        resultDisplay.innerText = "";
-
-        // Hide reset button and show roll button again
-        resetButton.style.display = "none";
-        rollButton.style.display = "inline-block";
+    // Single button handles both actions
+    actionButton.addEventListener("click", function() {
+        if (actionButton.classList.contains("roll-btn")) {
+            rollDice();
+        } else {
+            resetDice();
+        }
     });
+
+    // Initialize
+    rollCountDisplay.textContent = rollCount;
+    lastResultDisplay.textContent = "-";
+    setButtonToRoll();
 });
